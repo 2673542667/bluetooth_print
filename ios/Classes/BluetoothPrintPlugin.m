@@ -211,8 +211,8 @@
             [command addCODE128:'B' : content];
         }else if([@"qrcode" isEqualToString:type]){
             //二维码
-            [command addQRCodeSizewithpL:0 withpH:0 withcn:0 withyfn:0 withn:[size intValue]];
-            [command addQRCodeSavewithpL:0x0b withpH:0 withcn:0x31 withyfn:0x50 withm:0x30 withData:[content dataUsingEncoding:NSUTF8StringEncoding]];
+            [command addQRCodeSizewithpL:(content.length + 3) withpH:0 withcn:0 withyfn:0 withn:[size intValue]];
+            [command addQRCodeSavewithpL:(content.length + 3) withpH:0 withcn:0x31 withyfn:0x50 withm:0x30 withData:[content dataUsingEncoding:NSUTF8StringEncoding]];
             [command addQRCodePrintwithpL:0 withpH:0 withcn:0 withyfn:0 withm:0];
         }else if([@"image" isEqualToString:type]){
             NSData *decodeData = [[NSData alloc] initWithBase64EncodedString:content options:0];
